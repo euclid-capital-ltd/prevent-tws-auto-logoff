@@ -26,7 +26,8 @@ while (42) {
         if (IsWindowViewable($id)) {
             my $now = DateTime->from_epoch(epoch => time(), time_zone => $tws_tz);
             printf "$now: window #$id reset logoff time to $logoff_time " if $verbose;
-            ClickWindow($id, 125, 55);
+            ClickWindow($id);
+            SendKeys("{TAB}");
             SendKeys("^(a)");        # select all text
             SendKeys($logoff_time);  # enter our preferred time
             SendKeys("{TAB}");       # switch to AM/PM checkbox
